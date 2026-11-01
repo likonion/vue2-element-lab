@@ -1,0 +1,20 @@
+{
+  "name": "vue2-element-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Vue 2.7 + Element UI 轻量级快速测试底板工程",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^2.7.16",
+    "element-ui": "^2.15.14"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue2": "^2.3.3",
+    "vite": "^5.4.14"
+  }
+}
