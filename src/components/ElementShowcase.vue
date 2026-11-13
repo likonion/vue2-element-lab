@@ -84,7 +84,12 @@
           </div>
           <div>
             <el-button size="small" type="success" icon="el-icon-download">导出</el-button>
-            <el-button size="small" type="primary" icon="el-icon-plus">新建</el-button>
+            <el-button
+              size="small"
+              type="primary"
+              icon="el-icon-plus"
+              @click="$refs.addDialog.show({ data: {}, type: 'add' })"
+            >新建</el-button>
           </div>
         </div>
 
@@ -150,12 +155,19 @@
         <p style="margin-top: 12px; color: #666;">常用于详情查看、复杂参数配置或辅助侧边栏。</p>
       </div>
     </el-drawer>
+
+    <UserDialog ref="addDialog" @submit="handleUserSubmit" />
   </div>
 </template>
 
 <script>
+import UserDialog from './UserDialog.vue'
+
 export default {
   name: 'ElementShowcase',
+  components: {
+    UserDialog
+  },
   data() {
     return {
       searchKey: '',
@@ -228,7 +240,30 @@ export default {
       })
     },
     handleEdit(row) {
-      this.$message.info(`正在编辑: ${row.name}`)
+      this.$refs.addDialog.show({ data: row, type: 'edit' })
+    },
+    handleUserSubmit({ data, type }) {
+      if (type === 'add') {
+        this.addUser(data)
+      } else if (type === 'edit') {
+        this.updateUser(data)
+      }
+    },
+    addUser(data) {
+      const nextId = this.userList.length > 0
+        ? Math.max(...this.userList.map(user => user.id)) + 1
+        : 1
+      this.userList.push({ ...data, id: nextId })
+      this.$message.success('新增成功')
+    },
+    updateUser(data) {
+      const index = this.userList.findIndex(user => user.id === data.id)
+      if (index === -1) {
+        this.$message.error('用户不存在，无法更新')
+        return
+      }
+      this.$set(this.userList, index, { ...data })
+      this.$message.success('更新成功')
     },
     handleDelete(row) {
       this.$confirm(`确认删除用户 [${row.name}] 吗？`, '警告', {
