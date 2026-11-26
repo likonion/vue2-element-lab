@@ -7,7 +7,15 @@
 - ⚡ **构建引擎**: [Vite 5](https://vitejs.dev/) + [@vitejs/plugin-vue2](https://github.com/vitejs/vite-plugin-vue2)（毫秒级冷启动，极速热更新，告别 Webpack 漫长编译）
 - 💚 **前端框架**: [Vue 2.7.16](https://v2.vuejs.org/)（Vue 2 最终 LTS 版本，内置 Composition API 支持，且 100% 兼容 Options API）
 - 🎨 **UI 组件库**: [Element UI 2.15.14](https://element.eleme.io/#/zh-CN)（经典后台管理组件库，已全局引入样式与组件）
-- 🧪 **测试沙箱**: 内置 `QuickSandbox`（响应式数据看板、事件日志流）与 `ElementShowcase`（常用表单校验、表格、弹窗模版）
+- 📖 **完整官方文档**: 内置 Element UI v2.15.14 官方「组件」栏目下的全部 67 个页面（更新日志、5 篇开发指南及 61 个组件交互演示、源码展开/复制与 API 参数表）
+- 🧪 **测试沙箱**: 内置 `QuickSandbox`（响应式数据看板、事件日志流）、`ComponentPatterns`（Dialog / ProTable 组件封装范式）与 `PitfallsGuide`（Vue 2.7 + Element UI 2.15 避坑指南）
+
+---
+
+## 🌐 在线访问 (GitHub Pages)
+
+- **在线预览地址**：[https://likonion.github.io/vue2-element-lab/](https://likonion.github.io/vue2-element-lab/)
+- 每次推送到 `main` 分支后，会通过 `.github/workflows/deploy.yml` 自动构建并部署至 GitHub Pages。
 
 ---
 
@@ -53,8 +61,9 @@ npm run preview
     ├── App.vue                 # 页面主骨架与 Tab 导航
     ├── style.css               # 全局基础样式
     └── components/
-        ├── QuickSandbox.vue    # 🧪 快速测试沙箱（可随手在此修改、测试组件与数据）
-        └── ElementShowcase.vue # 📚 常用组件模板（表单校验、表格操作、消息交互等样例）
+        ├── QuickSandbox.vue        # 🧪 快速测试沙箱（可随手在此修改、测试组件与数据）
+        ├── ComponentPatterns.vue   # 📦 业务组件封装范式（Dialog 独立封装、ProTable 分页表格）
+        └── PitfallsGuide.vue       # ⚠️ Vue 2.7 + Element UI 2.15 避坑指南
 ```
 
 ---

@@ -1,0 +1,195 @@
+@import '../demo-styles/index.scss';
+
+.page-component {
+  .content {
+    color: #4a5568;
+    font-size: 14px;
+    line-height: 1.7;
+
+    > h2 {
+      font-size: 28px;
+      color: #111827;
+      margin: 0 0 10px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+
+    > h3 {
+      margin: 44px 0 16px;
+      font-size: 20px;
+      color: #1a202c;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f0f2f7;
+      scroll-margin-top: 20px;
+    }
+
+    > h4 {
+      margin: 26px 0 10px;
+      font-size: 15px;
+      color: #1f2937;
+      font-weight: 600;
+    }
+
+    > p {
+      font-size: 14px;
+      color: #4a5568;
+      line-height: 1.75;
+      margin: 10px 0 14px;
+    }
+
+    > ul:not(.timeline):not(.icon-list) {
+      margin: 10px 0 16px;
+      padding: 0 0 0 20px;
+      font-size: 14px;
+      color: #4a5568;
+      line-height: 1.9;
+    }
+
+    a {
+      color: #3b82f6;
+      text-decoration: none;
+      transition: color 0.15s;
+
+      &:hover {
+        color: #1d4ed8;
+        text-decoration: underline;
+      }
+    }
+
+    code:not(.hljs) {
+      background-color: #f1f5f9;
+      padding: 2px 6px;
+      border: 1px solid #e2e8f0;
+      border-radius: 5px;
+      color: #334155;
+      font-size: 12.5px;
+      font-family: "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
+    }
+
+    > pre {
+      margin: 16px 0 20px;
+      border-radius: 10px;
+      overflow-x: auto;
+      background-color: #f8fafc;
+      border: 1px solid #e6eaf2;
+
+      code.hljs {
+        padding: 16px 20px;
+        background: #f8fafc;
+        font-size: 12.5px;
+        line-height: 1.75;
+        font-family: "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
+      }
+    }
+
+    .tip {
+      padding: 12px 18px;
+      background: linear-gradient(90deg, #eff8ff 0%, #f7fbff 100%);
+      border-radius: 8px;
+      border: 1px solid #d5eaff;
+      border-left: 4px solid #409eff;
+      margin: 20px 0;
+
+      p {
+        margin: 6px 0;
+        color: #334155;
+        font-size: 13.5px;
+        line-height: 1.7;
+      }
+    }
+
+    .warning {
+      padding: 12px 18px;
+      background: linear-gradient(90deg, #fff5f5 0%, #fffafa 100%);
+      border-radius: 8px;
+      border: 1px solid #fed7d7;
+      border-left: 4px solid #f56c6c;
+      margin: 20px 0;
+
+      p {
+        margin: 6px 0;
+        color: #4a5568;
+        font-size: 13.5px;
+        line-height: 1.7;
+      }
+    }
+
+    > table {
+      border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+      background-color: #fff;
+      font-size: 13.5px;
+      margin: 16px 0 36px;
+      line-height: 1.65;
+      border: 1px solid #e6eaf2;
+      border-radius: 10px;
+      overflow: hidden;
+
+      strong {
+        font-weight: 600;
+        color: #1f2937;
+      }
+
+      thead tr {
+        background-color: #f8fafc;
+      }
+
+      th {
+        text-align: left;
+        white-space: nowrap;
+        color: #64748b;
+        font-weight: 600;
+        font-size: 12.5px;
+        padding: 12px 14px;
+        border-bottom: 1px solid #e6eaf2;
+      }
+
+      td {
+        color: #334155;
+        padding: 12px 14px;
+        max-width: 300px;
+        word-break: break-word;
+        border-bottom: 1px solid #f1f5f9;
+        vertical-align: top;
+      }
+
+      tbody tr:last-child td {
+        border-bottom: none;
+      }
+
+      tbody tr {
+        transition: background-color 0.12s;
+      }
+
+      tbody tr:hover {
+        background-color: #f8fbff;
+      }
+
+      td:first-child {
+        font-family: "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
+        font-size: 12.5px;
+        color: #2563eb;
+        font-weight: 500;
+      }
+    }
+
+    > ul.icon-list {
+      border-radius: 10px;
+      border-color: #e6eaf2 !important;
+      background: #fff;
+
+      li {
+        cursor: pointer;
+        transition: background-color 0.15s ease, transform 0.15s ease;
+
+        &:hover {
+          background-color: #f4f9ff;
+        }
+      }
+    }
+  }
+}
