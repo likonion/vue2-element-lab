@@ -69,48 +69,123 @@
 
       <div v-if="activeTab === 'guide'" class="workspace-container">
         <div class="guide-hero">
-          <div class="guide-hero-badge">Vue 2.7 + Element UI 2.15.14 + Vite 5</div>
-          <h2>本地离线官方文档 & 极速组件实验工坊</h2>
+          <div class="guide-hero-top">
+            <div class="guide-hero-badge">Vue 2.7.16 · Element UI 2.15.14 · Vite 5</div>
+            <a
+              href="https://github.com/likonion/vue2-element-lab"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="guide-repo-link"
+            >
+              <i class="el-icon-link" /> GitHub 仓库
+            </a>
+          </div>
+          <h2>Element UI 离线文档 · 封装范式 · 避坑指南 · 实验工坊</h2>
           <p>
-            专为 Vue 2 + Element UI 日常开发打造：完整内置官方 67 个组件文档与 300 个交互示例，
-            搭配毫秒级热更新的实验沙箱，查文档、复现问题、验证交互一站完成。
+            面向 Vue 2 + Element UI 日常研发的一站式工作台：内置官方全部 67 个文档页与 300 个交互示例、
+            可复用 Dialog / ProTable 二次封装范式、20 篇版本专属踩坑实录以及极速热更新沙箱。
           </p>
+          <div class="guide-quick-actions">
+            <el-button size="small" type="primary" icon="el-icon-reading" @click="activeTab = 'docs'">
+              浏览官方文档
+            </el-button>
+            <el-button size="small" plain icon="el-icon-box" @click="activeTab = 'patterns'">
+              查看组件封装
+            </el-button>
+            <el-button size="small" plain icon="el-icon-warning-outline" @click="activeTab = 'pitfalls'">
+              查阅避坑指南
+            </el-button>
+            <el-button size="small" plain icon="el-icon-search" @click="paletteVisible = true">
+              唤起 {{ isMac ? '⌘K' : 'Ctrl+K' }} 全局搜索
+            </el-button>
+          </div>
         </div>
 
         <div class="guide-grid">
-          <div class="guide-card">
-            <div class="guide-card-icon blue"><i class="el-icon-reading" /></div>
+          <div class="guide-card clickable" @click="activeTab = 'docs'">
+            <div class="guide-card-head">
+              <div class="guide-card-icon blue"><i class="el-icon-reading" /></div>
+              <span class="guide-card-tag">67 页 · 300 Demo</span>
+            </div>
             <h3>完整官方组件文档</h3>
-            <p>1:1 收录 Element UI v2.15.14「组件」栏目下的全部 67 个页面，包含实时交互演示、源码展开与一键复制、API 参数表及右侧本页目录定位。</p>
+            <p>1:1 收录 Element UI v2.15.14「组件」栏目全部页面，支持左右独立滚动、右侧本页目录 TOC 定位、源码展开/复制与 Icon 一键复制类名。</p>
           </div>
 
-          <div class="guide-card">
-            <div class="guide-card-icon green"><i class="el-icon-search" /></div>
-            <h3>全局 ⌘K 极速检索</h3>
-            <p>在任意页面按下 <code>{{ isMac ? '⌘ + K' : 'Ctrl + K' }}</code> 即可唤起快捷面板，支持中英文名称与路由模糊匹配，键盘上下键直达目标组件。</p>
+          <div class="guide-card clickable" @click="activeTab = 'patterns'">
+            <div class="guide-card-head">
+              <div class="guide-card-icon green"><i class="el-icon-box" /></div>
+              <span class="guide-card-tag">2 套实战范式</span>
+            </div>
+            <h3>业务组件封装范式</h3>
+            <p>沉淀独立 <code>Dialog</code>（<code>ref</code> + <code>$options.data()</code> 终极重置）与 <code>ProTable</code>（内置分页 + 跨页勾选 + 防重请求），支持在线联动体验与源码复制。</p>
           </div>
 
-          <div class="guide-card">
-            <div class="guide-card-icon purple"><i class="el-icon-cpu" /></div>
+          <div class="guide-card clickable" @click="activeTab = 'pitfalls'">
+            <div class="guide-card-head">
+              <div class="guide-card-icon amber"><i class="el-icon-warning-outline" /></div>
+              <span class="guide-card-tag">20 篇高频坑点</span>
+            </div>
+            <h3>版本专属避坑指南</h3>
+            <p>基于 GitHub Issues 与社区实战，汇总 Vue 2.7 + Element UI 2.15.14 + Vite 5 常见坑点，提供错对代码对比并支持一键跳转对应官方文档。</p>
+          </div>
+
+          <div class="guide-card clickable" @click="activeTab = 'sandbox'">
+            <div class="guide-card-head">
+              <div class="guide-card-icon purple"><i class="el-icon-cpu" /></div>
+              <span class="guide-card-tag">毫秒级 HMR</span>
+            </div>
             <h3>响应式实验沙箱</h3>
-            <p>修改 <code>src/components/QuickSandbox.vue</code> 即可实时调试组件行为，右侧同步展示响应式 JSON 状态与事件触发时间线。</p>
+            <p>直接编辑 <code>src/components/QuickSandbox.vue</code> 调试任意组件与交互，右侧同步展示响应式 JSON 状态与事件触发时间线。</p>
+          </div>
+
+          <div class="guide-card clickable" @click="paletteVisible = true">
+            <div class="guide-card-head">
+              <div class="guide-card-icon indigo"><i class="el-icon-search" /></div>
+              <span class="guide-card-tag">{{ isMac ? '⌘ + K' : 'Ctrl + K' }}</span>
+            </div>
+            <h3>全局跨模块极速检索</h3>
+            <p>任意页面按下 <code>{{ isMac ? '⌘ + K' : 'Ctrl + K' }}</code> 即可同时模糊检索官方文档、组件封装与避坑指南，键盘上下回车直达目标。</p>
+          </div>
+
+          <div class="guide-card">
+            <div class="guide-card-head">
+              <div class="guide-card-icon teal"><i class="el-icon-upload" /></div>
+              <span class="guide-card-tag">CI / CD</span>
+            </div>
+            <h3>GitHub Pages 自动部署</h3>
+            <p>内置 <code>.github/workflows/deploy.yml</code>，推送至 <code>main</code> 分支即自动构建并发布静态站点，离线本地与在线均可随时查阅。</p>
           </div>
         </div>
 
-        <div class="guide-commands">
-          <div class="commands-header">
-            <span>常用开发命令</span>
-            <span class="commands-sub">Vite 5 · 极速冷启动 & HMR</span>
-          </div>
-          <div class="command-list">
-            <div v-for="item in commands" :key="item.cmd" class="command-row">
-              <div>
-                <code>{{ item.cmd }}</code>
-                <span class="command-desc">{{ item.desc }}</span>
+        <div class="guide-bottom-grid">
+          <div class="guide-commands">
+            <div class="commands-header">
+              <span>常用开发命令</span>
+              <span class="commands-sub">Vite 5 · 极速冷启动 & HMR</span>
+            </div>
+            <div class="command-list">
+              <div v-for="item in commands" :key="item.cmd" class="command-row">
+                <div>
+                  <code>{{ item.cmd }}</code>
+                  <span class="command-desc">{{ item.desc }}</span>
+                </div>
+                <el-button size="mini" type="text" icon="el-icon-document-copy" @click="copyCommand(item.cmd)">
+                  复制
+                </el-button>
               </div>
-              <el-button size="mini" type="text" icon="el-icon-document-copy" @click="copyCommand(item.cmd)">
-                复制
-              </el-button>
+            </div>
+          </div>
+
+          <div class="guide-commands">
+            <div class="commands-header">
+              <span>核心目录速览</span>
+              <span class="commands-sub">按模块清晰拆分</span>
+            </div>
+            <div class="dir-list">
+              <div v-for="dir in coreDirs" :key="dir.path" class="dir-row">
+                <code>{{ dir.path }}</code>
+                <span>{{ dir.desc }}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -156,9 +231,18 @@ export default {
         { name: 'guide', label: '使用说明', icon: 'el-icon-document' }
       ],
       commands: [
+        { cmd: 'npm install', desc: '安装项目依赖' },
         { cmd: 'npm run dev', desc: '启动本地开发服务 (http://localhost:3000)' },
-        { cmd: 'npm run build', desc: '生产环境打包构建' },
+        { cmd: 'npm run build', desc: '生产环境打包构建（dist/）' },
         { cmd: 'npm run preview', desc: '本地预览生产构建产物' }
+      ],
+      coreDirs: [
+        { path: 'src/element-docs/', desc: 'Element UI 官方 67 页中文文档、Demo 插件与阅读器' },
+        { path: 'src/components/patterns/', desc: 'BestPracticeDialog 与 ProTable 封装组件源码' },
+        { path: 'src/data/pitfalls.js', desc: 'Vue 2.7 + Element UI 2.15 20 篇避坑知识库数据' },
+        { path: 'src/components/QuickSandbox.vue', desc: '随手修改、实时调试组件的快速沙箱入口' },
+        { path: 'build/vite-plugin-element-md.js', desc: '将官方 Markdown Demo 编译为 Vue 2 SFC 的插件' },
+        { path: '.github/workflows/deploy.yml', desc: 'GitHub Pages 自动构建与部署工作流配置' }
       ]
     }
   },
@@ -420,14 +504,14 @@ export default {
 
 /* 使用说明页 */
 .guide-hero {
-  background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 60%, #f5f3ff 100%);
   border: 1px solid #dbeafe;
   border-radius: 16px;
-  padding: 32px 36px;
-  margin-bottom: 24px;
+  padding: 28px 34px;
+  margin-bottom: 22px;
 
   h2 {
-    font-size: 24px;
+    font-size: 23px;
     font-weight: 700;
     color: #111827;
     margin: 12px 0 10px;
@@ -435,12 +519,42 @@ export default {
   }
 
   p {
-    font-size: 14.5px;
+    font-size: 14px;
     color: #475569;
-    max-width: 720px;
+    max-width: 780px;
     line-height: 1.75;
     margin: 0;
   }
+}
+
+.guide-hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.guide-repo-link {
+  font-size: 12.5px;
+  color: #2563eb;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #dbeafe;
+  padding: 4px 10px;
+  border-radius: 7px;
+  transition: all 0.14s;
+
+  &:hover {
+    background: #eff6ff;
+  }
+}
+
+.guide-quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
 }
 
 .guide-hero-badge {
@@ -451,37 +565,43 @@ export default {
   background: #dbeafe;
   padding: 3px 10px;
   border-radius: 999px;
+  font-family: Menlo, Monaco, Consolas, monospace;
 }
 
 .guide-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  margin-bottom: 24px;
+  gap: 16px;
+  margin-bottom: 22px;
 }
 
 .guide-card {
   background: #ffffff;
   border: 1px solid var(--app-border);
   border-radius: 14px;
-  padding: 22px 24px;
+  padding: 20px 22px;
   box-shadow: var(--app-shadow-xs);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+
+  &.clickable {
+    cursor: pointer;
+  }
 
   &:hover {
     transform: translateY(-2px);
+    border-color: #bfdbfe;
     box-shadow: var(--app-shadow-sm);
   }
 
   h3 {
-    font-size: 16px;
+    font-size: 15.5px;
     font-weight: 600;
     color: #111827;
     margin: 14px 0 8px;
   }
 
   p {
-    font-size: 13.5px;
+    font-size: 13px;
     color: #64748b;
     line-height: 1.7;
     margin: 0;
@@ -496,9 +616,25 @@ export default {
   }
 }
 
+.guide-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.guide-card-tag {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #64748b;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
 .guide-card-icon {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 10px;
   display: inline-flex;
   align-items: center;
@@ -515,9 +651,58 @@ export default {
     color: #059669;
   }
 
+  &.amber {
+    background: #fffbeb;
+    color: #d97706;
+  }
+
   &.purple {
     background: #f5f3ff;
     color: #7c3aed;
+  }
+
+  &.indigo {
+    background: #eef2ff;
+    color: #4f46e5;
+  }
+
+  &.teal {
+    background: #f0fdfa;
+    color: #0d9488;
+  }
+}
+
+.guide-bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.dir-list {
+  padding: 8px 20px;
+}
+
+.dir-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 9px 0;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 12.5px;
+  color: #64748b;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  code {
+    align-self: flex-start;
+    font-family: "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
+    font-size: 12px;
+    color: #2563eb;
+    background: #eff6ff;
+    padding: 2px 7px;
+    border-radius: 5px;
   }
 }
 
@@ -584,7 +769,8 @@ export default {
     display: none;
   }
 
-  .guide-grid {
+  .guide-grid,
+  .guide-bottom-grid {
     grid-template-columns: 1fr;
   }
 }
